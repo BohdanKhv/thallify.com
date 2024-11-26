@@ -15,9 +15,8 @@ const Sidebar = () => {
       <div className="flex flex-col justify-between flex-grow">
         <div className="sidebar-top">
           <NavLink to="/about" className="logo">
-            {logo}
-            <p className="mt-4 pb-2">
-              Thallify
+            <p className="mt-4 fs-20 pb-2 bold">
+              THALLIFY
             </p>
           </NavLink>
           <NavLink to="/top-artists" className="sidebar-item">
@@ -38,20 +37,8 @@ const Sidebar = () => {
           </NavLink>
         </div>
         <div className="text-center footer border-top">
-          <div className="flex flex-col">
-            <p className="fs-6">
-              created by
-            </p>
-            <a 
-              href="https://www.instagram.com/bohdan.khvorostovskyi/"
-              target="_blank"
-              rel='noopener noreferrer'
-            >
-              Bohdan Khvorostovskyi
-            </a>
-          </div>
           <p className="fs-6">
-            2022
+            2025
           </p>
         </div>
       </div>

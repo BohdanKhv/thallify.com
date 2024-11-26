@@ -3,8 +3,7 @@ import { useDispatch } from "react-redux"
 import { topArtists, resetList } from "../features/list/listSlice"
 import { Nav, Header, DigItems } from "../components"
 import { spotifyLogo } from "../assets/img/img"
-import { logEvent } from 'firebase/analytics';
-import { analytics } from '../firebase';
+import { Link } from "react-router-dom"
 
 
 const Dig = () => {
@@ -17,10 +16,6 @@ const Dig = () => {
         window.scrollTo(0, 0)
 
         document.title = "Thallify.com | Dig Deeper"
-
-        logEvent(analytics, 'screen_view', {
-            screen_name: `Dig`
-        });
     }, [])
 
     useEffect(() => {
@@ -37,7 +32,7 @@ const Dig = () => {
     return (
         <div className="container pb-1 content">
             <Header />
-            <div className="filter-shadow">
+            <div className="border-radius border border-sm-none">
                 <Nav
                     active={timeRange}
                     setTimeRange={setTimeRange}
@@ -48,27 +43,27 @@ const Dig = () => {
                 />
                 <div className="overflow-hidden parent-node">
                     <div className={`${layout === 'list_layout' ? 'flex-col ' : 'flex-row flex-wrap p-1 justify-center gap-1 align-center '}flex bg-main min-h-sm image-node`}>
-                        <div className={`spotify-logo grid-col-1-1 border-bottom flex justify-between align-center ${layout === 'list_layout' ? 'p-1' : 'w-100 pb-2'}`}>
-                            <div className="pl-1 spotify-logo flex-grow">
-                                {spotifyLogo}
-                            </div>
-                            <div className="text-center pr-1">
-                                <p className="fs-4">
-                                    My Music Taste
-                                </p>
-                                <p className="fs-5 mt-5">
-                                    {timeRange === "short_term" ? "Last 7 Days" : timeRange === "medium_term" ? "Last 6 Month" : "All Time"}
-                                </p>
-                            </div>
+                        <div className="text-center p-2 border-bottom show-on-saving">
+                            <p className="fs-20 bold">
+                                My top spotify artists {timeRange === "short_term" ? "in the last 7 days" : timeRange === "medium_term" ? "in the last 6 month" : "of all time"}
+                            </p>
                         </div>
                         <DigItems itemLimit={itemLimit} />
-                        <div className={`spotify-logo grid-col-1-1 border-top text-end ${layout === 'list_layout' ? 'p-1' : 'w-100 pt-2'}`}>
-                            <p className="bold fs-4">
+                        <div className={`spotify-logo grid-col-1-1 border-bottom flex justify-between align-center ${layout === 'list_layout' ? 'p-1' : 'w-100 pb-2'}`}>
+                            <div className="spotify-logo flex-grow px-3">
+                                {spotifyLogo}
+                            </div>
+                            <p className="bold fs-4 text-center">
                                 thallify.com
                             </p>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="p-3 flex justify-center">
+                <Link to="/about" className="text-center p-3" title="About">
+                    About Thallify
+                </Link>
             </div>
         </div>
     )

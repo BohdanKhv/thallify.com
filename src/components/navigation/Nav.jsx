@@ -4,8 +4,6 @@ import { saveAs } from 'file-saver'
 import html2canvas from "html2canvas"
 import { downloadIcon, gridIcon, listIcon, loadingIcon } from "../../assets/icons/icons"
 import "./styles/Nav.css"
-import { logEvent } from 'firebase/analytics';
-import { analytics } from '../../firebase';
 
 
 const Nav = ({active, setTimeRange, setLayout, layout, setItemLimit, itemLimit, maxItemLimit}) => {
@@ -52,11 +50,6 @@ const Nav = ({active, setTimeRange, setLayout, layout, setItemLimit, itemLimit, 
             }).then(canvas => {
                 const png = canvas.toDataURL("image/png")
                 saveAs(png, 'image.png')
-                logEvent(analytics, 'download_image', {
-                    item_list: location.pathname,
-                    item_limit: itemLimit,
-                    item_range: active ? active : 'short_term',
-                });
                 setIsSaving(false)
                 document.querySelector('.image-node').classList.remove('saving')
                 document.querySelector('.image-node').style.minWidth = '0px'
@@ -76,7 +69,10 @@ const Nav = ({active, setTimeRange, setLayout, layout, setItemLimit, itemLimit, 
     return (
         <div className="nav">
             <div className="nav-left">
-                {!location.pathname.includes('/recently-played') && (
+                {location.pathname.includes('/recently-played') ?
+                null
+                :
+                (
                 <>
                 <div 
                     ref={active === 'short_term' ? activeRef : null}

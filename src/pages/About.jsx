@@ -1,8 +1,6 @@
 import { useSelector } from 'react-redux/es/exports';
 import { useEffect } from 'react'
 import { downloadIcon } from '../assets/icons/icons'
-import { logEvent } from 'firebase/analytics';
-import { analytics } from '../firebase';
 import { Header } from '../components'
 
 const About = () => {
@@ -12,16 +10,12 @@ const About = () => {
     window.scrollTo(0, 0)
 
     document.title = "Thallify.com | About"
-
-    logEvent(analytics, 'screen_view', {
-      screen_name: `About`
-    });
   }, [])
 
   return (
     <div className={`container pb-1${user ? " content" : ""}`}>
       <Header />
-      <div className="filter-shadow bg-main p-1">
+      <div className="border border-radius bg-main px-lg py-1 p-sm-3 border-sm-none">
         <div className="pb-1 border-bottom">
           <br />
           <h1 className="title-2 bold">

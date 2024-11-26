@@ -8,13 +8,12 @@
     justify-content: flex-start;
     height: -webkit-fill-available;
     align-items: center;
-    width: 100px;
+    width: 175px;
     background-color: var(--color-main);
     display: flex;
     flex-direction: column;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    box-shadow: var(--box-shadow);
+    padding: 40px 20px;
+    /* box-shadow: var(--box-shadow); */
     gap: 40px;
 }
 
@@ -35,20 +34,20 @@
 
 .sidebar .sidebar-item {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
     color: var(--text-menu);
     fill: var(--text-menu);
-    font-size: 14px;
-    opacity: 0.3;
+    font-size: 15px;
     transition-duration: var(--transition-duration);
     cursor: pointer;
-    padding: 20px 0;
+    padding: 14px 28px;
+    font-weight: 500;
 }
 
 .sidebar-item:hover {
-    opacity: 1;
+    background-color: var(--color-secondary);
+    border-radius: 20px;
 }
 .sidebar .sidebar-item.active {
     opacity: 1;
@@ -57,9 +56,8 @@
 }
 
 .sidebar .sidebar-item svg {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 8px;
+    width: 24px;
+    height: 24px;
 }
 
 .sidebar .footer {
@@ -77,7 +75,16 @@
     color: var(--color-primary);
 }
 
-@media (max-width: 769px) { 
+.sidebar-top {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+@media (max-width: 769px) {
+    .sidebar-top {
+        flex-direction: row;
+    }
     .sidebar {
         padding: 8px 12px;
         left: auto;
@@ -89,6 +96,8 @@
         height: auto;
         width: 100vw;
         width: -webkit-fill-available;
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(5px);
     }
 
     .sidebar .footer,
@@ -103,9 +112,18 @@
     }
 
     .sidebar .sidebar-item {
-        flex-grow: 1;
+        flex: 1;
         padding: 0;
         font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0px;
+    }
+    .sidebar .sidebar-item:hover {
+        background-color: transparent;
+        border-radius: 0;
     }
 
     .sidebar .sidebar-item svg {

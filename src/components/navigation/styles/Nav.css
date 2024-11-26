@@ -1,4 +1,4 @@
-.nav::before {
+/* .nav::before {
     content: "";
     display: block;
     position: absolute;
@@ -13,14 +13,16 @@
     transform: translateZ(0) skewY(-3deg);
     outline: 1px solid transparent;
     width: 100.1%;
-}
+} */
 
 .nav {
     position: relative;
     display: flex;
     justify-content: space-between;
-    padding: 50px 20px 35px 20px;
+    padding: 35px 20px 35px 20px;
     background-color: var(--color-main);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     border-bottom: 1px solid var(--color-tertiary);
 }
 
@@ -80,6 +82,7 @@
 }
 
 .tabs-indicator {
+    border-radius: 8px;
     background-color: var(--text-dark);
     height: 4px;
     position: absolute;
@@ -91,7 +94,7 @@
     .nav {
         flex-direction: column;
         gap: 0;
-        padding: 35px 0 20px 0;
+        padding: 20px 0 20px 0;
     }
 
     .nav-item {

@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { recentlyPlayed, resetList } from "../features/list/listSlice"
 import { RecentItem, Nav, Header, LoadingItem } from "../components"
 import { spotifyLogo } from "../assets/img/img"
-import { logEvent } from 'firebase/analytics';
-import { analytics } from '../firebase';
+import { Link } from "react-router-dom"
 
 
 const Tracks = () => {
@@ -19,10 +18,6 @@ const Tracks = () => {
 
         document.title = "Thallify.com | Recently Played"
 
-        logEvent(analytics, 'screen_view', {
-            screen_name: `Recently Played`
-        });
-
         return () => {
             promise && promise.abort()
             dispatch(resetList())
@@ -32,14 +27,14 @@ const Tracks = () => {
     return (
         <div className="container pb-1 content">
             <Header />
-            <div className="filter-shadow">
+            <div className="border-radius border border-sm-none">
                 <Nav
                     setLayout={setLayout}
                     layout={layout}
                     setItemLimit={setItemLimit}
                     itemLimit={itemLimit}
                 />
-                <div className="overflow-hidden parent-node">
+                <div className="overflow-hidden parent-node border-radius">
                     <div className={`${layout === 'list_layout' ? 'flex-col ' : 'flex-row flex-wrap gap-1 p-1 justify-center align-center '}flex bg-main min-h-sm image-node`}>
                         <div className={`spotify-logo grid-col-1-1 border-bottom flex justify-between align-center ${layout === 'list_layout' ? 'p-1' : 'w-100 pb-2'}`}>
                             <div className="spotify-logo flex-grow">
@@ -73,13 +68,21 @@ const Tracks = () => {
                                 Your list is empty. Try listening to more music and then come back to this page.
                             </div>
                         )}
-                        <div className={`spotify-logo grid-col-1-1 border-top text-end ${layout === 'list_layout' ? 'p-1' : 'w-100 pt-2'}`}>
-                            <p className="bold fs-4">
+                        <div className={`spotify-logo grid-col-1-1 border-bottom flex justify-between align-center ${layout === 'list_layout' ? 'p-1' : 'w-100 pb-2'}`}>
+                            <div className="spotify-logo flex-grow px-3">
+                                {spotifyLogo}
+                            </div>
+                            <p className="bold fs-4 text-center">
                                 thallify.com
                             </p>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="p-3 flex justify-center">
+                <Link to="/about" className="text-center p-3" title="About">
+                About Thallify
+                </Link>
             </div>
         </div>
     )

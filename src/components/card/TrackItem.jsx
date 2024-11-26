@@ -1,7 +1,7 @@
 const TrackItem = ({item, index, layout}) => {
   return (
     <a 
-      className="artist-item flex flex-grow align-center bg-hover py-1 px-3"
+      className="artist-item flex flex-grow align-center bg-hover py-1 px-1 p-sm-3"
       href={`${item.uri}`}
       style={{
         ['--order']: `${index}`
