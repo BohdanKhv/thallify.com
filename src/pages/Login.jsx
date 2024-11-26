@@ -20,35 +20,12 @@ const Login = () => {
         <div 
             className="px-1 text-center bg-gradient relative overflow-hidden"
         >
-            <div
-                style={{
-                    width: '400px',
-                    height: '400px',
-                    top: '-200px',
-                    left: '-200px',
-                    position: 'absolute',
-                }}
-            >
-                {logo}
-            </div>
-            <div
-                className="filter-shadow"
-                style={{
-                    width: '400px',
-                    height: '400px',
-                    bottom: '-200px',
-                    right: '-200px',
-                    position: 'absolute',
-                }}
-            >
-                {logo}
-            </div>
             <div className="mx-w-sm mx-auto h-screen flex flex-col justify-center">
                 <h1 className="title-1 filter-shadow">
-                    Your Spotify Hits
+                    Your Ai Spotify
                 </h1>
                 <h5 className="title-3 mt-3 filter-shadow">
-                    Discover and share your top tracks and artists
+                    Discover, share and get to know your music taste
                 </h5>
             <div className="mt-2">
                 <SpotifyLogin />

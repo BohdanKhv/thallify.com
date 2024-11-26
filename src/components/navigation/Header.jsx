@@ -15,6 +15,7 @@ const Header = () => {
                         location.pathname.includes('/top-artists') ? 'Top Artists' :
                         location.pathname.includes('/top-tracks') ? 'Top Tracks' :
                         location.pathname.includes('/dig') ? 'Dig Deeper' :
+                        location.pathname.includes('/ai') ? 'AI' :
                         location.pathname.includes('/about') ? 'About' :
                         "Recent"
                     }

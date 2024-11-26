@@ -33,15 +33,15 @@ const Artists = () => {
     return (
         <div className="container">
             <Header />
+            <Nav
+                active={timeRange}
+                setTimeRange={setTimeRange}
+                setLayout={setLayout}
+                layout={layout}
+                setItemLimit={setItemLimit}
+                itemLimit={itemLimit}
+            />
             <div className="border-radius border border-sm-none">
-                <Nav
-                    active={timeRange}
-                    setTimeRange={setTimeRange}
-                    setLayout={setLayout}
-                    layout={layout}
-                    setItemLimit={setItemLimit}
-                    itemLimit={itemLimit}
-                />
                 <div className="overflow-hidden parent-node border-radius">
                     <div className={`${layout === 'list_layout' ? 'flex-col ' : 'flex-row flex-wrap p-1 justify-center gap-1 align-center '}flex bg-main min-h-sm image-node`}>
                         <div className="text-center p-2 border-bottom show-on-saving">
@@ -78,11 +78,6 @@ const Artists = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="p-3 flex justify-center">
-                <Link to="/about" className="text-center p-3" title="About">
-                About Thallify
-                </Link>
             </div>
         </div>
     )

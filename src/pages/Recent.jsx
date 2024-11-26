@@ -27,28 +27,15 @@ const Tracks = () => {
     return (
         <div className="container">
             <Header />
+            <Nav
+                setLayout={setLayout}
+                layout={layout}
+                setItemLimit={setItemLimit}
+                itemLimit={itemLimit}
+            />
             <div className="border-radius border border-sm-none">
-                <Nav
-                    setLayout={setLayout}
-                    layout={layout}
-                    setItemLimit={setItemLimit}
-                    itemLimit={itemLimit}
-                />
                 <div className="overflow-hidden parent-node border-radius">
                     <div className={`${layout === 'list_layout' ? 'flex-col ' : 'flex-row flex-wrap gap-1 p-1 justify-center align-center '}flex bg-main min-h-sm image-node`}>
-                        <div className={`spotify-logo grid-col-1-1 border-bottom flex justify-between align-center ${layout === 'list_layout' ? 'p-1' : 'w-100 pb-2'}`}>
-                            <div className="spotify-logo flex-grow">
-                                {spotifyLogo}
-                            </div>
-                            <div className="text-center">
-                                <p className="fs-4">
-                                    My Recently
-                                </p>
-                                <p className="fs-5 mt-5">
-                                    Played
-                                </p>
-                            </div>
-                        </div>
                         {isLoading ? (
                             Array.from({ length: itemLimit }, (_, index) => (
                                 <LoadingItem key={index} layout={layout} />
@@ -78,11 +65,6 @@ const Tracks = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="p-3 flex justify-center">
-                <Link to="/about" className="text-center p-3" title="About">
-                About Thallify
-                </Link>
             </div>
         </div>
     )

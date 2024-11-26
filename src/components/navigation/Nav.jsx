@@ -68,8 +68,11 @@ const Nav = ({active, setTimeRange, setLayout, layout, setItemLimit, itemLimit, 
 
     return (
         <div className="nav">
+            {location.pathname.includes('/recently-played') || location.pathname.includes('/ai') ?
+            <div/>
+            :
             <div className="nav-left">
-                {location.pathname.includes('/recently-played') ?
+                {location.pathname.includes('/recently-played') || location.pathname.includes('/ai') ?
                 null
                 :
                 (
@@ -101,7 +104,9 @@ const Nav = ({active, setTimeRange, setLayout, layout, setItemLimit, itemLimit, 
                     }}
                 />
             </div>
+            }
             <div className="nav-right">
+                {setItemLimit && (
                 <div className={`nav-item`}>
                     <input
                         onClick={(e) => e.target.select()}
@@ -117,6 +122,7 @@ const Nav = ({active, setTimeRange, setLayout, layout, setItemLimit, itemLimit, 
                         }}
                     />
                 </div>
+                )}
                 {isSaving ? (
                     <div
                         title="Downloading image"
@@ -128,10 +134,11 @@ const Nav = ({active, setTimeRange, setLayout, layout, setItemLimit, itemLimit, 
                         title="Download"
                         onClick={downloadImage}
                         className={`nav-item`}>
+                            {location.pathname.includes('/ai') ? <span className="px-1">Download</span> : ''}
                         {downloadIcon}
                     </div>
                 }
-                {!location.pathname.includes('/dig') && (
+                {!location.pathname.includes('/dig') && !location.pathname.includes('/ai') && (
                 <>
                 <div
                     className={`nav-item divider`}>

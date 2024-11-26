@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux/es/exports'
 import { logo } from '../../assets/img/img'
-import { peopleIcon, audioIcon, historyIcon, digIcon, peopleFillIcon, audioFillIcon, historyFillIcon } from '../../assets/icons/icons'
+import { peopleIcon, audioIcon, historyIcon, digIcon, peopleFillIcon, audioFillIcon, historyFillIcon, starsIcon, infoIcon } from '../../assets/icons/icons'
 import "./styles/Sidebar.css"
 
 
@@ -36,10 +36,22 @@ const Sidebar = () => {
               {digIcon}
               <span>Dig</span>
             </NavLink>
+            <NavLink to="/ai" className="sidebar-item">
+              {starsIcon}
+              <span>AI</span>
+            </NavLink>
+            {window.innerWidth > 800 ?
+            <NavLink to="/about" className="sidebar-item">
+              {infoIcon}
+              <span>About</span>
+            </NavLink>
+            : null}
           </div>
-          <div className="text-center footer">
-            <p className="fs-6 py-1">
-              2025
+          <div className="footer">
+            <p className="fs-6 p-1">
+              <a href="https://khvorostovskyi.com" target="_blank" rel="noreferrer">
+                More projects
+              </a>
             </p>
           </div>
         </div>

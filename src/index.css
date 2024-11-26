@@ -398,6 +398,9 @@ body {
 .bold {
     font-weight: 500!important;
 }
+.weight-800 {
+    font-weight: 800!important;
+}
 
 a {
     text-decoration: none;
