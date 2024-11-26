@@ -2,18 +2,19 @@ import { useSelector } from 'react-redux/es/exports';
 import { useEffect } from 'react'
 import { downloadIcon } from '../assets/icons/icons'
 import { Header } from '../components'
+import { useLocation } from 'react-router-dom';
 
 const About = () => {
-  const { user } = useSelector(state => state.user);
+  const {pathanme} = useLocation()
 
   useEffect(() => {
     window.scrollTo(0, 0)
 
     document.title = "Thallify.com | About"
-  }, [])
+  }, [pathanme])
 
   return (
-    <div className={`container pb-1${user ? " content" : ""}`}>
+    <div className={`container pb-1`}>
       <Header />
       <div className="border border-radius bg-main px-lg py-1 p-sm-3 border-sm-none">
         <div className="pb-1 border-bottom">

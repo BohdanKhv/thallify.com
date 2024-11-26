@@ -23,6 +23,8 @@
     --color-5: #ee7aae;
     --color-6: #6ec9cb;
     --color-7: #faa774;
+    --nav-width: 235px;
+    --w-max-xl: 1280px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
@@ -49,14 +51,19 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
-
-html, body, #root {
-    height: 100%;
-}
-
 html {
     overflow-x: hidden;
+}
+
+.content {
+    max-width: var(--w-max-xl);
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+}
+.content-body {
+flex-grow: 1;
 }
 
 body {
@@ -72,12 +79,8 @@ body {
 }
 
 .container {
-    max-width: 850px;
     margin: 0 auto;
     padding: 0 16px;
-}
-.content {
-    padding-left: 116px;
 }
 
 .app {
@@ -579,10 +582,8 @@ a {
     }
 
     .content {
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 0;
-        padding-bottom: 85px;
+        flex-direction: column;
+        gap: 0;
     }
 
     .img-cover {
@@ -611,6 +612,34 @@ a {
 
     .item-anim {
         padding-right: 0.5rem;
+    }
+    .container {
+        padding: 0;
+    }
+}
+.animation-slide-in {
+    opacity: 0;
+    -webkit-animation-name: slide-in;
+    animation-name: slide-in;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-delay: calc(var(--slide-in-delay, 0) * 0.05);
+    animation-delay: calc(var(--slide-in-delay, 0) * 0.05);
+    -webkit-animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards; 
+}
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    50% {
+        /* opacity: 0.75; */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

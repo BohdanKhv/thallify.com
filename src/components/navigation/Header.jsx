@@ -10,14 +10,7 @@ const Header = () => {
     return (
         <div className="header">
             <div className="flex gap-1 align-center">
-                {location.pathname.includes('/about') ? (
-                    <Link to={user ? "/top-artists" : "/"} className="icon-lg icon-btn" title="Home">
-                        {arrowLeftShortIcon}
-                    </Link>
-                ) : (
-                    null
-                )}
-                <h1 className="header-title text-menu">
+                <h1 className="header-title text-menu animation-slide-in">
                     {
                         location.pathname.includes('/top-artists') ? 'Top Artists' :
                         location.pathname.includes('/top-tracks') ? 'Top Tracks' :

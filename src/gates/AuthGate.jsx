@@ -28,7 +28,7 @@ const AuthGate = ({ children }) => {
     }, [dispatch, navigate, user]);
 
     return (
-        (user || (location.pathname === '/about')) ? <div className="app"><Sidebar/>{children}</div> : <Login />
+        (user || (location.pathname === '/about')) ? <div className="content"><Sidebar/><div className="content-body">{children}</div></div> : <Login />
     )
 }
 

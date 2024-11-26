@@ -25,7 +25,7 @@ const Tracks = () => {
     }, [])
 
     return (
-        <div className="container pb-1 content">
+        <div className="container">
             <Header />
             <div className="border-radius border border-sm-none">
                 <Nav
