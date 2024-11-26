@@ -38,7 +38,7 @@ const Sidebar = () => {
             </NavLink>
             <NavLink to="/ai" className="sidebar-item">
               {starsIcon}
-              <span>AI</span>
+              <span>AI Insights</span>
             </NavLink>
             {window.innerWidth > 800 ?
             <NavLink to="/about" className="sidebar-item">

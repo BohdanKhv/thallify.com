@@ -4,11 +4,11 @@ import { saveAs } from 'file-saver'
 import html2canvas from "html2canvas"
 import { downloadIcon, gridIcon, listIcon, loadingIcon } from "../../assets/icons/icons"
 import "./styles/Nav.css"
+import Download from "./Download"
 
 
 const Nav = ({active, setTimeRange, setLayout, layout, setItemLimit, itemLimit, maxItemLimit}) => {
     const location = useLocation()
-    const [isSaving, setIsSaving] = useState(false)
     const activeRef = useRef(null);
     const indicatorRef = useRef(null);
     const [indicatorWidth, setIndicatorWidth] = useState(0);
@@ -32,39 +32,6 @@ const Nav = ({active, setTimeRange, setLayout, layout, setItemLimit, itemLimit, 
         }
     }, [active, windowWidth])
 
-    const downloadImage = () => {
-        setIsSaving(true)
-        document.querySelector('.image-node').classList.add('saving')
-        document.querySelector('.parent-node').classList.add('opacity-0')
-        document.querySelector('.image-node').style.minWidth = '550px'
-        document.querySelector('.image-node').style.maxWidth = '550px'
-
-        setTimeout(() => {
-            html2canvas(document.querySelector('.image-node'), {
-                allowTaint: true,
-                useCORS: true,
-                scale: 2,
-                width: document.querySelector('.image-node').offsetWidth,
-                height: document.querySelector('.image-node').offsetHeight,
-                dpi: 300,
-            }).then(canvas => {
-                const png = canvas.toDataURL("image/png")
-                saveAs(png, 'image.png')
-                setIsSaving(false)
-                document.querySelector('.image-node').classList.remove('saving')
-                document.querySelector('.image-node').style.minWidth = '0px'
-                document.querySelector('.image-node').style.maxWidth = 'unset'
-                document.querySelector('.parent-node').classList.remove('opacity-0')
-            }).catch(err => {
-                console.log(err)
-                setIsSaving(false)
-                document.querySelector('.image-node').classList.remove('saving')
-                document.querySelector('.image-node').style.minWidth = '0px'
-                document.querySelector('.image-node').style.maxWidth = 'unset'
-                document.querySelector('.parent-node').classList.remove('opacity-0')
-            })
-        }, 1000)
-    }
 
     return (
         <div className="nav">
@@ -123,21 +90,7 @@ const Nav = ({active, setTimeRange, setLayout, layout, setItemLimit, itemLimit, 
                     />
                 </div>
                 )}
-                {isSaving ? (
-                    <div
-                        title="Downloading image"
-                        className={`nav-item spinner`}>
-                        {loadingIcon}
-                    </div>
-                ) : 
-                    <div
-                        title="Download"
-                        onClick={downloadImage}
-                        className={`nav-item`}>
-                            {location.pathname.includes('/ai') ? <span className="px-1">Download</span> : ''}
-                        {downloadIcon}
-                    </div>
-                }
+                <Download/>
                 {!location.pathname.includes('/dig') && !location.pathname.includes('/ai') && (
                 <>
                 <div

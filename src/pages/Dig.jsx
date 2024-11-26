@@ -40,7 +40,7 @@ const Dig = () => {
                 setItemLimit={setItemLimit}
                 itemLimit={itemLimit}
             />
-            <div className="border-radius border border-sm-none overflow-hidden">
+            <div className="border-radius border border-sm-none border-radius-sm-none overflow-hidden">
                 <div className="overflow-hidden parent-node">
                     <div className={`${layout === 'list_layout' ? 'flex-col ' : 'flex-row flex-wrap p-1 justify-center gap-1 align-center '}flex bg-main min-h-sm image-node`}>
                         <div className="text-center p-2 border-bottom show-on-saving">

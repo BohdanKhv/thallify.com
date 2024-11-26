@@ -5,6 +5,7 @@ import { Nav, Header } from "../components"
 import { spotifyLogo } from "../assets/img/img"
 import { Link } from "react-router-dom"
 import { getAiInsight } from "../features/ai/aiSlice"
+import Download from "../components/navigation/Download"
 
 
 const AiInsights = () => {
@@ -97,15 +98,19 @@ const Ai = () => {
     return (
         <div className="container">
             <Header />
-            {aiData && aiData.length > 0 &&
-                <Nav />
+            {tracks && tracks.length > 5 &&
+                <div className="flex justify-between px-2 pb-2">
+                    <div className="fs-20">
+                    </div>
+                    <Download/>
+                </div>
             }
             <div className="border-radius border border-sm-none overflow-hidden">
                 <div className="overflow-hidden parent-node">
                     <div className={`flex-col flex bg-main min-h-sm image-node`}>
                         <div className="text-center p-2 border-bottom show-on-saving">
-                            <p className="fs-20 bold">
-                                My AI Insight based on my Top {tracks?.length} Spotify tracks
+                            <p className="fs-18 bold">
+                                AI generated about me based on my Top {tracks?.length} Spotify tracks
                             </p>
                         </div>
                         {isLoading ?
